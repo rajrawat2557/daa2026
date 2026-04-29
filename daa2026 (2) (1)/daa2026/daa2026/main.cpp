@@ -13,7 +13,7 @@ int main() {
 
     Graph g(6);
 
-    // this is to  Add roads (distance in km approx)
+    // 🔹 Add roads (distance in km approx)
     g.addEdge(0,1,3); // ISBT → Clock Tower
     g.addEdge(1,2,4); // Clock Tower → Rajpur Road
     g.addEdge(1,3,2); // Clock Tower → Ballupur
@@ -21,7 +21,7 @@ int main() {
     g.addEdge(4,5,3); // Prem Nagar → Clement Town
     g.addEdge(2,3,3); // Rajpur Road → Ballupur
 
-    // this is for  Map numbers to names
+    // 🔹 Map numbers to names
     map<int, string> names;
     names[0] = "ISBT";
     names[1] = "Clock Tower";
@@ -52,22 +52,23 @@ int main() {
     cout << "\nSource: " << names[src];
     cout << "\nDestination: " << names[dest] << endl;
 
-    // this is for  Dijkstra
+    // 🔹 Dijkstra
     auto start1 = high_resolution_clock::now();
-    dijkstra(g, src, dest, congestion,names);
+    dijkstra(g, src, dest, congestion);
     auto stop1 = high_resolution_clock::now();
 
     cout << "Time: "
          << duration_cast<microseconds>(stop1 - start1).count()
          << " microseconds\n";
 
-    // this is  for A*
+    // 🔹 A*
     auto start2 = high_resolution_clock::now();
-    astar(g, src, dest, congestion,names);
+    astar(g, src, dest, congestion);
     auto stop2 = high_resolution_clock::now();
 
     cout << "Time: "
          << duration_cast<microseconds>(stop2 - start2).count()
          << " microseconds\n";
+
     return 0;
 }
